@@ -45,6 +45,5 @@
         'package': 'ejabberd',
     },
 }, merge=salt['pillar.get']('ejabberd:lookup')) %}
-{% do salt['defaults.merge'](defaults['ejabberd'], lookup) %}
-{#- Merge in salt pillar #}
+
 {% set salt_settings = salt['pillar.get']('salt', default=defaults['ejabberd'], merge=True) %}
