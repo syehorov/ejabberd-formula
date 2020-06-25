@@ -1,7 +1,8 @@
 {% from "ejabberd/map.jinja" import ejabberd with context %}
 ejabberd_package:
   pkg.installed:
-    - pkgs: {{ ejabberd.package | json }}
+    - pkgs:
+      - {{ ejabberd.package | json }}
     - watch_in:
       - service: ejabberd_service
 

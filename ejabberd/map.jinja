@@ -46,4 +46,4 @@
     },
 }, merge=salt['pillar.get']('ejabberd:lookup')) %}
 
-{% set salt_settings = salt['pillar.get']('salt', default=defaults['ejabberd'], merge=True) %}
+{% set ejabberd = salt['pillar.get']('ejabberd', default=defaults['ejabberd'], merge=True) %}

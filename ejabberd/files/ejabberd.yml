@@ -2,44 +2,44 @@
 # This file is managed by salt. Manual changes risk being overwritten.
 #######################################################################
 {%- set ejabberd = pillar.get('ejabberd', {}) %}
-loglevel: {{ ejabberd.loglevel }}
+loglevel: {{ loglevel }}
 
-{% if ejabberd.watchdog_admins %}
+{% if watchdog_admins %}
 watchdog_admins:
-{% for admin in ejabberd.watchdog_admins %}
+{% for admin in watchdog_admins %}
   - {{ admin }}
 {% endfor %}
 {% endif %}
 
-{% if ejabberd.hosts %}
+{% if hosts %}
 hosts:
-{% for host in ejabberd.hosts %}
+{% for host in hosts %}
   - {{ host }}
 {% endfor %}
 {% endif %}
 
-{% if ejabberd.route_subdomains %}
-route_subdomains: {{ ejabberd.route_subdomains }}
+{% if route_subdomains %}
+route_subdomains: {{ route_subdomains }}
 {% endif %}
 
 listen:
-  {% for listen_item in ejabberd.listen -%}
+  {% for listen_item in listen -%}
   -
     {%- for key,value in listen_item|dictsort %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
-auth_method: {{ ejabberd.auth_method }}
+auth_method: {{ auth_method }}
 acl:
-{% for acl in ejabberd.acl %}
+{% for acl in acl %}
   {{ acl }}
 {% endfor %}
 access:
-{% for access in ejabberd.access %}
+{% for access in access %}
   {{ access }}
 {% endfor %}
 modules:
-{% for modules in ejabberd.modules %}
+{% for modules in modules %}
   {{ modules }}
 {% endfor %}
 
