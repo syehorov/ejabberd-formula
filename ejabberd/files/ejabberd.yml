@@ -3,6 +3,10 @@
 #######################################################################
 {%- set ejabberd = pillar.get('ejabberd', {}) %}
 loglevel: {{ ejabberd.loglevel }}
+language: {{ ejabberd.language }}
+log_rotate_size: {{ ejabberd.log_rotate_size }}
+log_rotate_date: "{{ ejabberd.log_rotate_date }}"
+log_rate_limit: {{ ejabberd.log_rate_limit }}
 
 {% if ejabberd.hosts %}
 hosts:
@@ -18,9 +22,62 @@ listen:
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
+
+disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
+s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
+s2s_certfile: {{ ejabberd.s2s_certfile }}
+s2s_protocol_options:
+{%- for options_item in ejabberd.s2s_protocol_options %}
+  - {{ options_item }}
+{% endfor %}
+
+s2s_access: {{ ejabberd.s2s_access }}
+max_fsm_queue: {{ ejabberd.max_fsm_queue }}
 acl:
-{%- for acl_item in ejabberd.acl %}
-  {{ acl_item }}
+  admin:
+    user:
+{%- for acl_user in ejabberd.acl.admin.user %}
+      - "{{ acl_user }}"
+{% endfor %}
+  local:
+{%- for acl_local in ejabberd.acl.local %}
+  {%- for key,value in acl_local|dictsort %}
+    {{ key }}: "{{ value }}"
+  {% endfor %}
+{% endfor %}
+  loopback:
+    ip:
+{%- for acl_ip in ejabberd.acl.loopback.ip %}
+      - "{{ acl_user }}"
+{% endfor %}
+odbc_type: {{ ejabberd.odbc_database }}
+odbc_database: {{ ejabberd.odbc_database }}
+{% if ejabberd.odbc_server %}
+odbc_server: "{{ ejabberd.odbc_server }}"
+{% endif %}
+{% if ejabberd.odbc_username %}
+odbc_username: "{{ ejabberd.odbc_username }}"
+{% endif %}
+{% if ejabberd.odbc_password %}
+odbc_password: "{{ ejabberd.odbc_password }}"
+{% endif %}
+{% if ejabberd.odbc_port %}
+odbc_port: {{ ejabberd.odbc_port }}
+{% endif %}
+{% if ejabberd.odbc_keepalive_interval %}
+odbc_keepalive_interval: {{ ejabberd.odbc_keepalive_interval }}
+{% endif %}
+{% if ejabberd.odbc_pool_size %}
+odbc_pool_size: {{ ejabberd.odbc_pool_size }}
+{% endif %}
+{% if ejabberd.pgsql_users_number_estimate %}
+pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
+{% endif %}
+shaper:
+{%- for shaper_item in ejabberd.shaper %}
+  {%- for key,value in shaper_item|dictsort %}
+    {{ key }}: {{ value }}
+  {% endfor %}
 {% endfor %}
 access:
 {%- for access_item in ejabberd.access %}
@@ -30,8 +87,25 @@ modules:
 {%- for module in ejabberd.modules %}
   {{ module }}
 {% endfor %}
+{% if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
-
+ldap_encrypt: {{ ejabberd.ldap_encrypt }}
+ldap_port: {{ ejabberd.ldap_port }}
+ldap_rootdn: "{{ ejabberd.ldap_rootdn }}"
+ldap_password: "{{ ejabberd.ldap_password }}"
+ldap_base: "{{ ejabberd.ldap_base }}"
+ldap_uids: {{ ejabberd.ldap_uids }}
+ldap_filter: "{{ ejabberd.ldap_filter }}"
+{% else %}
+auth_method: {{ ejabberd.auth_method }}
+{% endif %}
+{% if ejabberd.captcha %}
+  {% for captcha_settings in ejabberd.captcha %}
+    {%- for key,value in captcha_settings|dictsort %}
+      {{ key }}: {{ value }}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
 ### Local Variables:
 ### mode: yaml
 ### End:
