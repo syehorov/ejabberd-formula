@@ -64,12 +64,12 @@ ejabberd:
     - mod_privacy: {}
     - mod_private: {}
     - mod_register:
-      welcome_message:
-        subject: '"Welcome!"'
-        body: |-
-          Hi.
-          Welcome to this XMPP server.
-      access: register
+        welcome_message:
+          subject: '"Welcome!"'
+          body: |-
+            Hi.
+            Welcome to this XMPP server.
+        access: register
     - mod_roster: {}
     - mod_shared_roster: {}
     - mod_stats: {}
