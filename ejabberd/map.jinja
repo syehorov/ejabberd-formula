@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
-{%- set tplroot = tpldir.split('/')[0] %}
-{%- import_yaml tplroot ~ "/defaults.yaml" as default_settings %}
-{% set ejabberd = salt['grains.filter_by']({
+{% import_yaml "ejabberd/defaults.yaml" as default_settings %}
+{% set ejabberd = salt['pillar.get']('ejabberd', default=default_settings.ejabberd, merge=True)%}
+{% set ejabberd_osmap = salt['grains.filter_by']({
     'Debian': {
         'config': {
             'base': '/etc/ejabberd',
@@ -45,4 +45,6 @@
            },
         'package': 'ejabberd',
     },
-}, merge=salt['pillar.get']('ejabberd:lookup', default=default_settings.ejabberd, merge=True)) %}
+}, default=default) %}
+
+{% do ejabberd.update( ejabberd_osmap ) %}
