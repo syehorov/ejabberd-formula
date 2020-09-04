@@ -19,7 +19,7 @@ ejabberd:
       module: ejabberd_c2s
       starttls: true
       protocol_options:
-        - '"no_sslv3"'
+        - "no_sslv3"
       max_stanza_size: 65536
       shaper: c2s_shaper
       access: c2s
