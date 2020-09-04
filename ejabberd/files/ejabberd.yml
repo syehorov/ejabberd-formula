@@ -48,33 +48,33 @@ acl:
 {%- endfor %}
 odbc_type: {{ ejabberd.odbc_database }}
 odbc_database: {{ ejabberd.odbc_database }}
-{% if ejabberd.odbc_server is defined %}
+{%- if ejabberd.odbc_server is defined %}
 odbc_server: "{{ ejabberd.odbc_server }}"
-{% endif %}
-{% if ejabberd.odbc_username is defined %}
+{%- endif %}
+{%- if ejabberd.odbc_username is defined %}
 odbc_username: "{{ ejabberd.odbc_username }}"
-{% endif %}
-{% if ejabberd.odbc_password is defined %}
+{%- endif %}
+{%- if ejabberd.odbc_password is defined %}
 odbc_password: "{{ ejabberd.odbc_password }}"
-{% endif %}
-{% if ejabberd.odbc_port is defined %}
+{%- endif %}
+{%- if ejabberd.odbc_port is defined %}
 odbc_port: {{ ejabberd.odbc_port }}
-{% endif %}
-{% if ejabberd.odbc_keepalive_interval is defined %}
+{%- endif %}
+{%- if ejabberd.odbc_keepalive_interval is defined %}
 odbc_keepalive_interval: {{ ejabberd.odbc_keepalive_interval }}
-{% endif %}
-{% if ejabberd.odbc_pool_size is defined %}
+{%- endif %}
+{%- if ejabberd.odbc_pool_size is defined %}
 odbc_pool_size: {{ ejabberd.odbc_pool_size }}
-{% endif %}
-{% if ejabberd.pgsql_users_number_estimate is defined %}
+{%- endif %}
+{%- if ejabberd.pgsql_users_number_estimate is defined %}
 pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
-{% endif %}
+{%- endif %}
 shaper:
-{% for shaper_item in ejabberd.shaper -%}
-  {% for key,value in shaper_item|dictsort -%}
+{%- for shaper_item in ejabberd.shaper %}
+  {%- for key,value in shaper_item|dictsort %}
     {{ key }}: {{ value }}
-  {% endfor %}
-{% endfor %}
+  {%- endfor %}
+{%- endfor %}
 access:
 {%- for access_item in ejabberd.access %}
   {%- for key,value in access_item|dictsort %}
@@ -87,7 +87,7 @@ modules:
     {{ key }}: {{ value }}
   {%- endfor %}
 {%- endfor %}
-{% if ejabberd.auth_method == 'ldap' %}
+{%- if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
 ldap_encrypt: {{ ejabberd.ldap_encrypt }}
 ldap_port: {{ ejabberd.ldap_port }}
@@ -96,21 +96,21 @@ ldap_password: "{{ ejabberd.ldap_password }}"
 ldap_base: "{{ ejabberd.ldap_base }}"
 ldap_uids: {{ ejabberd.ldap_uids }}
 ldap_filter: "{{ ejabberd.ldap_filter }}"
-{% else %}
+{%- else %}
 auth_method: {{ ejabberd.auth_method }}
-{% endif %}
-{% if ejabberd.captcha is defined %}
-  {% for captcha_settings in ejabberd.captcha %}
-    {% for key,value in captcha_settings %}
+{%- endif %}
+{%- if ejabberd.captcha is defined %}
+  {%- for captcha_settings in ejabberd.captcha %}
+    {%- for key,value in captcha_settings %}
       {{ key }}: {{ value }}
-    {% endfor %}
-  {% endfor %}
-{% endif %}
-{% if ejabberd.raw_items is defined %}
-  {% for raw_item in ejabberd.raw_items %}
-{{ raw_item }}
-  {% endfor %}
-{% endif %}
+    {%- endfor %}
+  {%- endfor %}
+{%- endif %}
+{%- if ejabberd.raw_items is defined %}
+  {%- for raw_item in ejabberd.raw_items %}
+    {{- raw_item }}
+  {%- endfor %}
+{%- endif %}
 ### Local Variables:
 ### mode: yaml
 ### End:
