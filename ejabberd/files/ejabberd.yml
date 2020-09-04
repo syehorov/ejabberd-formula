@@ -5,7 +5,7 @@
 {% endraw %}
 {% from "ejabberd/map.jinja" import ejabberd with context %}
 loglevel: {{ ejabberd.loglevel }}
-language: {{ ejabberd.language }}
+language: "{{ ejabberd.language }}"
 log_rotate_size: {{ ejabberd.log_rotate_size }}
 log_rotate_date: "{{ ejabberd.log_rotate_date }}"
 log_rate_limit: {{ ejabberd.log_rate_limit }}
@@ -13,7 +13,7 @@ log_rate_limit: {{ ejabberd.log_rate_limit }}
 {% if ejabberd.hosts %}
 hosts:
 {%- for host in ejabberd.hosts %}
-  - {{ host }}
+  - "{{ host }}"
 {%- endfor %}
 {%- endif %}
 
@@ -27,10 +27,10 @@ listen:
 
 disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
 s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
-s2s_certfile: {{ ejabberd.s2s_certfile }}
+s2s_certfile: "{{ ejabberd.s2s_certfile }}"
 s2s_protocol_options:
 {%- for options_item in ejabberd.s2s_protocol_options %}
-  - {{ options_item }}
+  - "{{ options_item }}"
 {%- endfor %}
 
 s2s_access: {{ ejabberd.s2s_access }}
