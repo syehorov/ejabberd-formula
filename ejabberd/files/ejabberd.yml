@@ -76,14 +76,14 @@ shaper:
   {% endfor %}
 {% endfor %}
 access:
-{% for access_item in ejabberd.access %}
-  {% for key,value in access_item|dictsort %}
+{%- for access_item in ejabberd.access %}
+  {%- for key,value in access_item|dictsort %}
     {{ key }}: {{ value }}
   {%- endfor %}
 {%- endfor %}
 modules:
-{% for module in ejabberd.modules %}
-  {% for key,value in module|dictsort %}
+{%- for module in ejabberd.modules %}
+  {%- for key,value in module|dictsort %}
     {{ key }}: {{ value }}
   {%- endfor %}
 {%- endfor %}
