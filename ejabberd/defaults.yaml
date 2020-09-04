@@ -3,6 +3,7 @@
 ---
 ejabberd:
   version: ''
+  service_persistent: true
   user: ejabberd
   group: ejabberd
   language: "en"
