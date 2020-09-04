@@ -46,25 +46,25 @@ acl:
 {%- for admin_item in ejabberd.acl.admins %}
       - {{ admin_item }}
 {%- endfor %}
-odbc_type: {{ ejabberd.odbc_database }}
-odbc_database: {{ ejabberd.odbc_database }}
-{%- if ejabberd.odbc_server is defined %}
-odbc_server: "{{ ejabberd.odbc_server }}"
+sql_type: {{ ejabberd.sql_database }}
+sql_database: {{ ejabberd.sql_database }}
+{%- if ejabberd.sql_server is defined %}
+sql_server: "{{ ejabberd.sql_server }}"
 {%- endif %}
-{%- if ejabberd.odbc_username is defined %}
-odbc_username: "{{ ejabberd.odbc_username }}"
+{%- if ejabberd.sql_username is defined %}
+sql_username: "{{ ejabberd.sql_username }}"
 {%- endif %}
-{%- if ejabberd.odbc_password is defined %}
-odbc_password: "{{ ejabberd.odbc_password }}"
+{%- if ejabberd.sql_password is defined %}
+sql_password: "{{ ejabberd.sql_password }}"
 {%- endif %}
-{%- if ejabberd.odbc_port is defined %}
-odbc_port: {{ ejabberd.odbc_port }}
+{%- if ejabberd.sql_port is defined %}
+sql_port: {{ ejabberd.sql_port }}
 {%- endif %}
-{%- if ejabberd.odbc_keepalive_interval is defined %}
-odbc_keepalive_interval: {{ ejabberd.odbc_keepalive_interval }}
+{%- if ejabberd.sql_keepalive_interval is defined %}
+sql_keepalive_interval: {{ ejabberd.sql_keepalive_interval }}
 {%- endif %}
-{%- if ejabberd.odbc_pool_size is defined %}
-odbc_pool_size: {{ ejabberd.odbc_pool_size }}
+{%- if ejabberd.sql_pool_size is defined %}
+sql_pool_size: {{ ejabberd.sql_pool_size }}
 {%- endif %}
 {%- if ejabberd.pgsql_users_number_estimate is defined %}
 pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
