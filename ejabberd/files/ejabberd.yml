@@ -25,7 +25,7 @@ listen:
   {%- endfor %}
 {%- endfor %}
 
-disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
+disable_sasl_mechanisms: "{{ ejabberd.disable_sasl_mechanisms }}"
 s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
 s2s_certfile: "{{ ejabberd.s2s_certfile }}"
 s2s_protocol_options:
