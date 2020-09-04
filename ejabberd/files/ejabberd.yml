@@ -87,7 +87,9 @@ access:
 {% endfor %}
 modules:
 {%- for module in ejabberd.modules %}
-  {{ module }}
+  {%- for key,value in module|dictsort %}
+    {{ key }}: "{{ value }}"
+  {% endfor %}
 {% endfor %}
 {% if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}

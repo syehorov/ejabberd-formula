@@ -80,7 +80,7 @@ ejabberd:
   acl:
     admin:
       user:
-        - ""
+        - "admin"
     local:
       - user_regexp: ""
     loopback:
