@@ -18,9 +18,9 @@ hosts:
 {% endif %}
 
 listen:
-{% for listen_item in ejabberd.listen -%}
+{%- for listen_item in ejabberd.listen %}
   -
-    {% for key,value in listen_item|dictsort -%}
+  {%- for key,value in listen_item|dictsort %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
@@ -29,7 +29,7 @@ disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
 s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
 s2s_certfile: {{ ejabberd.s2s_certfile }}
 s2s_protocol_options:
-{% for options_item in ejabberd.s2s_protocol_options -%}
+{%- for options_item in ejabberd.s2s_protocol_options %}
   - {{ options_item }}
 {% endfor %}
 
