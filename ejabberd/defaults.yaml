@@ -5,6 +5,7 @@ ejabberd:
   version: ''
   user: ejabberd
   group: ejabberd
+  language: "en"
   install_packages: true
   config_path: /etc/ejabberd
   loglevel: 3
@@ -47,7 +48,6 @@ ejabberd:
     - "no_sslv3"
   s2s_access: s2s
   allow_contrib_modules: true
-  language: "en"
   modules:
     mod_adhoc: '{}'
     mod_admin_extra:
