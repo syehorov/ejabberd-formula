@@ -78,7 +78,7 @@ ejabberd:
   auth_method: mnesia
   max_fsm_queue: 1000
   acl:
-    admin:
+    admins:
       - '"admin"'
   shaper:
     normal: 1000
