@@ -19,16 +19,16 @@ ejabberd_package:
     - watch_in:
       - service: ejabberd
     - require:
-      - pkg: {{ ejabberd.package | json }}
+      - pkg: ejabberd_package
 
 ejabberd_service:
   service.running:
     - name: ejabberd
     - watch:
       - file: {{ ejabberd.config.base }}/{{ ejabberd.config.filename }}
-      - pkg: {{ ejabberd.package | json }}
+      - pkg: ejabberd_package
     - require:
-      - pkg: {{ ejabberd.package | json }}
+      - pkg: ejabberd_package
 {% if ejabberd.get('service_persistent', True) %}
     - enable: True
 {% endif %}
