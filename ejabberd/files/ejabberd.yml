@@ -48,25 +48,25 @@ acl:
 {% endfor %}
 odbc_type: {{ ejabberd.odbc_database }}
 odbc_database: {{ ejabberd.odbc_database }}
-{% if ejabberd.odbc_server %}
+{% if ejabberd.odbc_server is defined %}
 odbc_server: "{{ ejabberd.odbc_server }}"
 {% endif %}
-{% if ejabberd.odbc_username %}
+{% if ejabberd.odbc_username is defined %}
 odbc_username: "{{ ejabberd.odbc_username }}"
 {% endif %}
-{% if ejabberd.odbc_password %}
+{% if ejabberd.odbc_password is defined %}
 odbc_password: "{{ ejabberd.odbc_password }}"
 {% endif %}
-{% if ejabberd.odbc_port %}
+{% if ejabberd.odbc_port is defined %}
 odbc_port: {{ ejabberd.odbc_port }}
 {% endif %}
-{% if ejabberd.odbc_keepalive_interval %}
+{% if ejabberd.odbc_keepalive_interval is defined %}
 odbc_keepalive_interval: {{ ejabberd.odbc_keepalive_interval }}
 {% endif %}
-{% if ejabberd.odbc_pool_size %}
+{% if ejabberd.odbc_pool_size is defined %}
 odbc_pool_size: {{ ejabberd.odbc_pool_size }}
 {% endif %}
-{% if ejabberd.pgsql_users_number_estimate %}
+{% if ejabberd.pgsql_users_number_estimate is defined %}
 pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
 {% endif %}
 shaper:
@@ -97,14 +97,14 @@ ldap_filter: "{{ ejabberd.ldap_filter }}"
 {% else %}
 auth_method: {{ ejabberd.auth_method }}
 {% endif %}
-{% if ejabberd.captcha %}
+{% if ejabberd.captcha is defined %}
   {% for captcha_settings in ejabberd.captcha %}
     {%- for key,value in captcha_settings %}
       {{ key }}: {{ value }}
     {% endfor %}
   {% endfor %}
 {% endif %}
-{% if ejabberd.raw_items %}
+{% if ejabberd.raw_items is defined %}
   {% for raw_item in ejabberd.raw_items %}
 {{ raw_item }}
   {% endfor %}
