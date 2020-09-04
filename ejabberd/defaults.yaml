@@ -49,8 +49,7 @@ ejabberd:
   allow_contrib_modules: true
   modules:
     - mod_adhoc: {}
-    - mod_admin_extra:
-        access: announce
+    - mod_admin_extra: {}
     - mod_caps: {}
     - mod_carboncopy: {}
     - mod_client_state: {}
