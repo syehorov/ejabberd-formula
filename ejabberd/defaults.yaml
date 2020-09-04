@@ -6,7 +6,7 @@ ejabberd:
   user: ejabberd
   group: ejabberd
   install_packages: true
-  config_path: /etc/salt
+  config_path: /etc/ejabberd
   loglevel: 3
   log_rotate_size: 0
   log_rotate_date: ""
@@ -49,7 +49,7 @@ ejabberd:
   language: "en"
   modules:
     mod_adhoc: {}
-    mod_admin_extra: {}
+    mod_admin_extra:
       access: announce
     mod_caps: {}
     mod_carboncopy: {}
