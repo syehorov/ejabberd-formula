@@ -43,9 +43,9 @@ acl:
       - "127.0.0.0/8"
   admin:
     user:
-{% for admin_item in ejabberd.acl.admins -%}
+{%- for admin_item in ejabberd.acl.admins %}
       - {{ admin_item }}
-{% endfor %}
+{%- endfor %}
 odbc_type: {{ ejabberd.odbc_database }}
 odbc_database: {{ ejabberd.odbc_database }}
 {% if ejabberd.odbc_server is defined %}
