@@ -12,18 +12,18 @@ log_rate_limit: {{ ejabberd.log_rate_limit }}
 
 {% if ejabberd.hosts %}
 hosts:
-{% for host in ejabberd.hosts -%}
+{%- for host in ejabberd.hosts %}
   - {{ host }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
 listen:
 {%- for listen_item in ejabberd.listen %}
   -
   {%- for key,value in listen_item|dictsort %}
     {{ key }}: {{ value }}
-  {% endfor %}
-{% endfor %}
+  {%- endfor %}
+{%- endfor %}
 
 disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
 s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
@@ -31,7 +31,7 @@ s2s_certfile: {{ ejabberd.s2s_certfile }}
 s2s_protocol_options:
 {%- for options_item in ejabberd.s2s_protocol_options %}
   - {{ options_item }}
-{% endfor %}
+{%- endfor %}
 
 s2s_access: {{ ejabberd.s2s_access }}
 max_fsm_queue: {{ ejabberd.max_fsm_queue }}
