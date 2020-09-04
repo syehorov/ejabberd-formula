@@ -10,7 +10,7 @@ ejabberd:
   config_path: /etc/ejabberd
   loglevel: 3
   log_rotate_size: 0
-  log_rotate_date: '""'
+  log_rotate_date: ""
   log_rate_limit: 100
   listen:
     -
