@@ -77,13 +77,15 @@ shaper:
 {% endfor %}
 access:
 {% for access_item in ejabberd.access %}
-  {{ access_item }}
+  {% for key,value in access_item|dictsort %}
+    {{ key }}: {{ value }}
+  {%- endfor %}
 {%- endfor %}
 modules:
 {% for module in ejabberd.modules %}
   {% for key,value in module|dictsort %}
     {{ key }}: {{ value }}
-  {% endfor %}
+  {%- endfor %}
 {%- endfor %}
 {% if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
