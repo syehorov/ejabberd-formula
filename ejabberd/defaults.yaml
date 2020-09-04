@@ -51,7 +51,7 @@ ejabberd:
   modules:
     mod_adhoc: '{}'
     mod_admin_extra:
-      access: announce
+      - access: announce
     mod_caps: '{}'
     mod_carboncopy: '{}'
     mod_client_state: '{}'
@@ -79,8 +79,8 @@ ejabberd:
   max_fsm_queue: 1000
   acl:
     admin:
-       - user:
-           - ""
+      user:
+        - ""
     local:
       - user_regexp: ""
     loopback:
