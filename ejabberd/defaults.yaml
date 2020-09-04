@@ -30,12 +30,7 @@ ejabberd:
       port: 5280
       ip: '"::"'
       module: ejabberd_http
-      request_handlers:
-        '"/websocket"': ejabberd_http_ws
-      web_admin: true
-      http_bind: true
-      captcha: true
-      tls: true
+      starttls: true
   disable_sasl_mechanisms: "digest-md5"
   s2s_use_starttls: optional
   certfiles:
@@ -59,9 +54,6 @@ ejabberd:
     - mod_privacy: {}
     - mod_private: {}
     - mod_register:
-        welcome_message:
-          subject: 'Welcome!'
-          body: 'Welcome to this XMPP server'
         access: register
     - mod_roster: {}
     - mod_shared_roster: {}
