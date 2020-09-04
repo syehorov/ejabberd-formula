@@ -65,7 +65,7 @@ ejabberd:
     mod_register:
       welcome_message:
         subject: "Welcome!"
-        body: |-
+        body: |
           Hi.
           Welcome to this XMPP server.
       access: register
