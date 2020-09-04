@@ -92,13 +92,13 @@ modules:
 {%- endfor %}
 {%- if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
-ldap_encrypt: {{ ejabberd.ldap_encrypt }}
-ldap_port: {{ ejabberd.ldap_port }}
-ldap_rootdn: "{{ ejabberd.ldap_rootdn }}"
-ldap_password: "{{ ejabberd.ldap_password }}"
-ldap_base: "{{ ejabberd.ldap_base }}"
-ldap_uids: {{ ejabberd.ldap_uids }}
-ldap_filter: "{{ ejabberd.ldap_filter }}"
+ldap_encrypt: {{ ejabberd.ldap.encrypt }}
+ldap_port: {{ ejabberd.ldap.port }}
+ldap_rootdn: "{{ ejabberd.ldap.rootdn }}"
+ldap_password: "{{ ejabberd.ldap.password }}"
+ldap_base: "{{ ejabberd.ldap.base }}"
+ldap_uids: {{ ejabberd.ldap.uids }}
+ldap_filter: "{{ ejabberd.ldap.filter }}"
 {%- else %}
 auth_method: {{ ejabberd.auth_method }}
 {%- endif %}
