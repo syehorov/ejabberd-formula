@@ -65,7 +65,7 @@ ejabberd:
     mod_private: {}
     mod_register:
       welcome_message:
-        subject: "Welcome!"
+        subject: '"Welcome!"'
         body: |
           Hi.
           Welcome to this XMPP server.
@@ -78,19 +78,13 @@ ejabberd:
   auth_method: mnesia
   max_fsm_queue: 1000
   acl:
-    - admin: |
-        user:
-          - "admin"
-    - local: |
-        user_regexp: ""
-    - loopback: |
-        ip:
-          - "127.0.0.0/8"
+    admin:
+      - '"admin"'
   shaper:
     normal: 1000
     fast: 50000
   odbc_type: sqlite
-  odbc_database: "/var/lib/ejabberd/odbc.db"
+  odbc_database: '"/var/lib/ejabberd/odbc.db"'
   access:
     max_user_sessions:
       all: 10

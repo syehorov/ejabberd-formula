@@ -36,10 +36,15 @@ s2s_protocol_options:
 s2s_access: {{ ejabberd.s2s_access }}
 max_fsm_queue: {{ ejabberd.max_fsm_queue }}
 acl:
-{%- for acl_item in ejabberd.acl %}
-  {%- for key,value in acl_item %}
-    {{ key }}: {{ value }}
-  {% endfor %}
+  local: 
+    user_regexp: ""
+  loopback:
+    ip:
+      - "127.0.0.0/8"
+  admin:
+    user:
+{%- for admin_item in ejabberd.acl.admins %}
+     - {{ admin_item }}
 {% endfor %}
 odbc_type: {{ ejabberd.odbc_database }}
 odbc_database: {{ ejabberd.odbc_database }}
