@@ -1,7 +1,9 @@
+{% raw %}
 #######################################################################
 # This file is managed by salt. Manual changes risk being overwritten.
 #######################################################################
-{%- set ejabberd = pillar.get('ejabberd', {}) %}
+{% endraw %}
+{% from "ejabberd/map.jinja" import ejabberd with context %}
 loglevel: {{ ejabberd.loglevel }}
 language: {{ ejabberd.language }}
 log_rotate_size: {{ ejabberd.log_rotate_size }}
