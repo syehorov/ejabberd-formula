@@ -77,7 +77,9 @@ shaper:
 {% endfor %}
 access:
 {%- for access_item in ejabberd.access %}
-  {{ access_item }}
+  {%- for key,value in access_item %}
+    {{ key }}: {{ value }}
+  {% endfor %}
 {% endfor %}
 modules:
 {%- for module in ejabberd.modules %}

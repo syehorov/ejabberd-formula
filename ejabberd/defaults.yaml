@@ -66,7 +66,7 @@ ejabberd:
     - mod_register:
       welcome_message:
         subject: '"Welcome!"'
-        body: |
+        body: |-
           Hi.
           Welcome to this XMPP server.
       access: register
@@ -87,33 +87,33 @@ ejabberd:
   odbc_database: '"/var/lib/ejabberd/odbc.db"'
   access:
     max_user_sessions:
-      all: 10
+      - all: 10
     max_user_offline_messages:
-      admin: 5000
-      all: 100
+      - admin: 5000
+      - all: 100
     local:
-      local: allow
+      - local: allow
     c2s:
-      blocked: deny
-      all: allow
+      - blocked: deny
+      - all: allow
     c2s_shaper:
-      admin: none
-      all: normal
+      - admin: none
+      - all: normal
     s2s_shaper:
-      all: fast
+      - all: fast
     announce:
-      admin: allow
+      - admin: allow
     configure:
-      admin: allow
+      - admin: allow
     muc_admin:
-      admin: allow
+      - admin: allow
     muc_create:
-      local: allow
+      - local: allow
     muc:
-      all: allow
+      - all: allow
     pubsub_createnode:
-      local: allow
+      - local: allow
     register:
-      all: allow
+      - all: allow
     trusted_network:
-      loopback: allow
+      - loopback: allow
