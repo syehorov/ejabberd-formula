@@ -12,7 +12,7 @@ log_rate_limit: {{ ejabberd.log_rate_limit }}
 
 {% if ejabberd.hosts %}
 hosts:
-{% for host in ejabberd.hosts %}
+{% for host in ejabberd.hosts -%}
   - {{ host }}
 {% endfor %}
 {% endif %}
@@ -20,7 +20,7 @@ hosts:
 listen:
 {% for listen_item in ejabberd.listen -%}
   -
-    {% for key,value in listen_item|dictsort %}
+    {% for key,value in listen_item|dictsort -%}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
@@ -29,7 +29,7 @@ disable_sasl_mechanisms: {{ ejabberd.disable_sasl_mechanisms }}
 s2s_use_starttls: {{ ejabberd.s2s_use_starttls }}
 s2s_certfile: {{ ejabberd.s2s_certfile }}
 s2s_protocol_options:
-{% for options_item in ejabberd.s2s_protocol_options %}
+{% for options_item in ejabberd.s2s_protocol_options -%}
   - {{ options_item }}
 {% endfor %}
 
@@ -43,7 +43,7 @@ acl:
       - "127.0.0.0/8"
   admin:
     user:
-{% for admin_item in ejabberd.acl.admins %}
+{% for admin_item in ejabberd.acl.admins -%}
       - {{ admin_item }}
 {% endfor %}
 odbc_type: {{ ejabberd.odbc_database }}
@@ -70,20 +70,18 @@ odbc_pool_size: {{ ejabberd.odbc_pool_size }}
 pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
 {% endif %}
 shaper:
-{% for shaper_item in ejabberd.shaper %}
-  {% for key,value in shaper_item|dictsort %}
+{% for shaper_item in ejabberd.shaper -%}
+  {% for key,value in shaper_item|dictsort -%}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
 access:
-{% for access_item in ejabberd.access %}
-  {% for key,value in access_item %}
-    {{ key }}: {{ value }}
-  {% endfor %}
+{% for access_item in ejabberd.access -%}
+  {{ access_item }}
 {% endfor %}
 modules:
-{% for module in ejabberd.modules %}
-  {% for key,value in module %}
+{% for module in ejabberd.modules -%}
+  {% for key,value in module|dictsort -%}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
