@@ -37,7 +37,7 @@ s2s_access: {{ ejabberd.s2s_access }}
 max_fsm_queue: {{ ejabberd.max_fsm_queue }}
 acl:
 {%- for acl_item in ejabberd.acl %}
-  {%- for key,value in acl_item|dictsort %}
+  {%- for key,value in acl_item %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
@@ -66,7 +66,7 @@ pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
 {% endif %}
 shaper:
 {%- for shaper_item in ejabberd.shaper %}
-  {%- for key,value in shaper_item|dictsort %}
+  {%- for key,value in shaper_item %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
@@ -76,7 +76,7 @@ access:
 {% endfor %}
 modules:
 {%- for module in ejabberd.modules %}
-  {%- for key,value in module|dictsort %}
+  {%- for key,value in module %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
@@ -94,7 +94,7 @@ auth_method: {{ ejabberd.auth_method }}
 {% endif %}
 {% if ejabberd.captcha %}
   {% for captcha_settings in ejabberd.captcha %}
-    {%- for key,value in captcha_settings|dictsort %}
+    {%- for key,value in captcha_settings %}
       {{ key }}: {{ value }}
     {% endfor %}
   {% endfor %}
