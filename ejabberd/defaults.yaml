@@ -84,7 +84,7 @@ ejabberd:
     local:
       - user_regexp: ""
     loopback:
-      - ip:
+      ip:
         - "127.0.0.0/8"
   shaper:
     normal: 1000
