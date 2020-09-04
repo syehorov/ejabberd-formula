@@ -108,6 +108,11 @@ auth_method: {{ ejabberd.auth_method }}
     {% endfor %}
   {% endfor %}
 {% endif %}
+{% if ejabberd.raw_items %}
+  {% for raw_item in ejabberd.raw_items %}
+{{ raw_item }}
+  {% endfor %}
+{% endif %}
 ### Local Variables:
 ### mode: yaml
 ### End:

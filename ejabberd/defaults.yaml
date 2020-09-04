@@ -79,10 +79,10 @@ ejabberd:
   max_fsm_queue: 1000
   acl:
     admin:
-       user:
+       - user:
            - ""
     local:
-      user_regexp: ""
+      - user_regexp: ""
     loopback:
       ip:
         - "127.0.0.0/8"
