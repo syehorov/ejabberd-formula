@@ -2,46 +2,35 @@
 # This file is managed by salt. Manual changes risk being overwritten.
 #######################################################################
 {%- set ejabberd = pillar.get('ejabberd', {}) %}
-loglevel: {{ loglevel }}
+loglevel: {{ ejabberd.loglevel }}
 
-{% if watchdog_admins %}
-watchdog_admins:
-{% for admin in watchdog_admins %}
-  - {{ admin }}
-{% endfor %}
-{% endif %}
-
-{% if hosts %}
+{% if ejabberd.hosts %}
 hosts:
-{% for host in hosts %}
+{% for host in ejabberd.hosts %}
   - {{ host }}
 {% endfor %}
 {% endif %}
 
-{% if route_subdomains %}
-route_subdomains: {{ route_subdomains }}
-{% endif %}
-
 listen:
-  {% for listen_item in listen -%}
+{% for listen_item in ejabberd.listen -%}
   -
     {%- for key,value in listen_item|dictsort %}
     {{ key }}: {{ value }}
   {% endfor %}
 {% endfor %}
-auth_method: {{ auth_method }}
 acl:
-{% for acl in acl %}
-  {{ acl }}
+{%- for acl_item in ejabberd.acl %}
+  {{ acl_item }}
 {% endfor %}
 access:
-{% for access in access %}
-  {{ access }}
+{%- for access_item in ejabberd.access %}
+  {{ access_item }}
 {% endfor %}
 modules:
-{% for modules in modules %}
-  {{ modules }}
+{%- for module in ejabberd.modules %}
+  {{ module }}
 {% endfor %}
+auth_method: {{ ejabberd.auth_method }}
 
 ### Local Variables:
 ### mode: yaml
