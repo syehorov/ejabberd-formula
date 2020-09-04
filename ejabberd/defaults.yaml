@@ -78,14 +78,14 @@ ejabberd:
   auth_method: mnesia
   max_fsm_queue: 1000
   acl:
-    admin: |
-      user:
-        - "admin"
-    local: |
-      user_regexp: ""
-    loopback: |
-      ip:
-        - "127.0.0.0/8"
+    - admin: |
+        user:
+          - "admin"
+    - local: |
+        user_regexp: ""
+    - loopback: |
+        ip:
+          - "127.0.0.0/8"
   shaper:
     normal: 1000
     fast: 50000
