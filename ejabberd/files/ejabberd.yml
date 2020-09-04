@@ -46,7 +46,7 @@ acl:
 {%- for admin_item in ejabberd.acl.admins %}
       - {{ admin_item }}
 {%- endfor %}
-sql_type: {{ ejabberd.sql_database }}
+sql_type: {{ ejabberd.sql_type }}
 sql_database: {{ ejabberd.sql_database }}
 {%- if ejabberd.sql_server is defined %}
 sql_server: "{{ ejabberd.sql_server }}"
