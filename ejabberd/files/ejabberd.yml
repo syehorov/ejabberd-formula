@@ -102,6 +102,13 @@ ldap_filter: "{{ ejabberd.ldap.filter }}"
 {%- else %}
 auth_method: {{ ejabberd.auth_method }}
 {%- endif %}
+{%- if ejabberd.redis is defined %}
+  {%- for redis_settings in ejabberd.redis %}
+    {%- for key,value in redis_settings %}
+      {{ key }}: {{ value }}
+    {%- endfor %}
+  {%- endfor %}
+{%- endif %}
 {%- if ejabberd.captcha is defined %}
   {%- for captcha_settings in ejabberd.captcha %}
     {%- for key,value in captcha_settings %}
