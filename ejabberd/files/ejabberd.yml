@@ -147,6 +147,7 @@ auth_method: {{ ejabberd.auth_method }}
     {{- raw_item }}
   {%- endfor %}
 {%- endif %}
+allow_contrib_modules: {{ ejabberd.allow_contrib_modules }}
 ### Local Variables:
 ### mode: yaml
 ### End:
