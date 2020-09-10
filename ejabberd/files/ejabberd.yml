@@ -83,6 +83,12 @@ pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
 shaper:
 {%- for shaper_item in ejabberd.shaper %}
   {%- for key,value in shaper_item|dictsort %}
+    {{ key }}: {{ value }}
+  {%- endfor %}
+{%- endfor %}
+access:
+{%- for access_item in ejabberd.access %}
+  {%- for key,value in access_item|dictsort %}
     {%- if value|length > 0 and value is mapping  %}
     {{ key }}:
       {%- for k,v in value|dictsort %}
@@ -91,12 +97,6 @@ shaper:
     {%- else %}
     {{ key }}: {{ value }}
     {%- endif %}
-  {%- endfor %}
-{%- endfor %}
-access:
-{%- for access_item in ejabberd.access %}
-  {%- for key,value in access_item|dictsort %}
-    {{ key }}: {{ value }}
   {%- endfor %}
 {%- endfor %}
 modules:
