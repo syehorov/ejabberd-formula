@@ -51,6 +51,7 @@ ejabberd:
     - mod_mam: {}
     - mod_avatar: {}
     - mod_vcard: {}
+    - mod_vcard_xupdate: {}
     - mod_disco: {}
     - mod_bosh: {}
     - mod_last: {}
