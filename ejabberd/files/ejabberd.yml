@@ -114,6 +114,10 @@ modules:
 {%- endfor %}
 {%- if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
+ldap_servers:
+{%- for server in ejabberd.ldap.servers %}
+  - {{ server }}
+{%- endfor %}
 ldap_encrypt: {{ ejabberd.ldap.encrypt }}
 ldap_port: {{ ejabberd.ldap.port }}
 ldap_rootdn: "{{ ejabberd.ldap.rootdn }}"
