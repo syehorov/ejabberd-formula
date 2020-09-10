@@ -25,7 +25,7 @@ ejabberd:
     -
       port: 5269
       ip: '"::"'
-      starttls: true
+      tls: true
       module: ejabberd_s2s_in
     -
       port: 5280
