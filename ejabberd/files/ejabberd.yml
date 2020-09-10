@@ -116,7 +116,7 @@ modules:
 auth_method: {{ ejabberd.auth_method }}
 ldap_servers:
 {%- for server in ejabberd.ldap.servers %}
-  - {{ server }}
+  - "{{ server }}"
 {%- endfor %}
 ldap_encrypt: {{ ejabberd.ldap.encrypt }}
 ldap_port: {{ ejabberd.ldap.port }}
