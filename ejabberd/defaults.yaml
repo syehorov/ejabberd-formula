@@ -50,12 +50,8 @@ ejabberd:
     - mod_client_state: {}
     - mod_mam: {}
     - mod_avatar: {}
-    - mod_disco:
-        server_info:
-          - 
-            modules:
-              - mod_disco
-              - mod_vcard
+    - mod_vcard: {}
+    - mod_disco: {}
     - mod_bosh: {}
     - mod_last: {}
     - mod_muc: {}
