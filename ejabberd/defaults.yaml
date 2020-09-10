@@ -19,19 +19,19 @@ ejabberd:
       ip: '"::"'
       module: ejabberd_c2s
       max_stanza_size: 65536
-      starttls: true
+      starttls: 'true'
       shaper: c2s_shaper
       access: c2s
     -
       port: 5269
       ip: '"::"'
-      tls: true
+      tls: 'true'
       module: ejabberd_s2s_in
     -
       port: 5280
       ip: '"::"'
       module: ejabberd_http
-      starttls: true
+      starttls: 'true'
       request_handlers:
         '"/admin"': ejabberd_web_admin
   disable_sasl_mechanisms: "digest-md5"
