@@ -21,7 +21,15 @@ listen:
 {%- for listen_item in ejabberd.listen %}
   -
   {%- for key,value in listen_item|dictsort %}
+    {%- if value is mapping  %}
+    {{ key }}:
+      {%- for k,v in value|dictsort %}
+      {{ k }}: {{ v }}
+      {%- endfor %}
+    {%- else %}
     {{ key }}: {{ value }}
+    {%- endif %}
+
   {%- endfor %}
 {%- endfor %}
 
@@ -75,7 +83,14 @@ pgsql_users_number_estimate: {{ ejabberd.pgsql_users_number_estimate }}
 shaper:
 {%- for shaper_item in ejabberd.shaper %}
   {%- for key,value in shaper_item|dictsort %}
+    {%- if value|length > 0 and value is mapping  %}
+    {{ key }}:
+      {%- for k,v in value|dictsort %}
+      {{ k }}: {{ v }}
+      {%- endfor %}
+    {%- else %}
     {{ key }}: {{ value }}
+    {%- endif %}
   {%- endfor %}
 {%- endfor %}
 access:
@@ -87,7 +102,14 @@ access:
 modules:
 {%- for module in ejabberd.modules %}
   {%- for key,value in module|dictsort %}
+    {%- if value|length > 0 and value is mapping  %}
+    {{ key }}:
+      {%- for k,v in value|dictsort %}
+      {{ k }}: {{ v }}
+      {%- endfor %}
+    {%- else %}
     {{ key }}: {{ value }}
+    {%- endif %}
   {%- endfor %}
 {%- endfor %}
 {%- if ejabberd.auth_method == 'ldap' %}
