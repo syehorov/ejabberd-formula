@@ -31,7 +31,7 @@ ejabberd:
       module: ejabberd_http
       starttls: true
       request_handlers:
-        "/admin": ejabberd_web_admin
+        '"/admin"': ejabberd_web_admin
   disable_sasl_mechanisms: "digest-md5"
   s2s_use_starttls: optional
   certfiles:
