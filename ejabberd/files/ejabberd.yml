@@ -112,7 +112,7 @@ modules:
     {%- endif %}
   {%- endfor %}
 {%- endfor %}
-{%- if ejabberd.auth_method == 'ldap' and ejabberd.ldap.shared_roster %}
+{%- if ejabberd.auth_method == 'ldap' and ejabberd.ldap.shared_roster id defined %}
     mod_shared_roster_ldap:
       ldap_servers:
       {%- for server in ejabberd.ldap.servers %}
