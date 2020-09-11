@@ -118,15 +118,14 @@ modules:
       {%- for server in ejabberd.ldap.servers %}
         - "{{ server }}"
       {%- endfor %}
-      ldap_groupattr: ou
-      ldap_memberattr: sAMAccountName
-      ldap_userdesc: {{ ejabberd.ldap.userdesc }}
+      ldap_groupattr: "ou"
+      ldap_memberattr: "sAMAccountName"
+      ldap_userdesc: "{{ ejabberd.ldap.userdesc }}"
       ldap_encrypt: {{ ejabberd.ldap.encrypt }}
       ldap_port: {{ ejabberd.ldap.port }}
       ldap_rootdn: "{{ ejabberd.ldap.rootdn }}"
       ldap_password: "{{ ejabberd.ldap.password }}"
       ldap_base: "{{ ejabberd.ldap.base }}"
-      ldap_uids: {{ ejabberd.ldap.uids }}
       ldap_filter: "{{ ejabberd.ldap.filter }}"
 {%- endif %}
 {%- if ejabberd.auth_method == 'ldap' %}
