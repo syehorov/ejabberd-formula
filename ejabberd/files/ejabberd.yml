@@ -112,6 +112,20 @@ modules:
     {%- endif %}
   {%- endfor %}
 {%- endfor %}
+{%- if ejabberd.auth_method == 'ldap' and ejabberd.ldap.shared_roster %}
+    mod_shared_roster_ldap:
+      ldap_servers:
+      {%- for server in ejabberd.ldap.servers %}
+        - "{{ server }}"
+      {%- endfor %}
+      ldap_encrypt: {{ ejabberd.ldap.encrypt }}
+      ldap_port: {{ ejabberd.ldap.port }}
+      ldap_rootdn: "{{ ejabberd.ldap.rootdn }}"
+      ldap_password: "{{ ejabberd.ldap.password }}"
+      ldap_base: "{{ ejabberd.ldap.base }}"
+      ldap_uids: {{ ejabberd.ldap.uids }}
+      ldap_filter: "{{ ejabberd.ldap.filter }}"
+{%- endif %}
 {%- if ejabberd.auth_method == 'ldap' %}
 auth_method: {{ ejabberd.auth_method }}
 ldap_servers:
