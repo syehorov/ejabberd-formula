@@ -1,6 +1,49 @@
-ejabberd.loglevel: 4
-#ejabberd.watchdog_admins:
-#  - "bob@example.com"
-#ejabberd.hosts:
-#  - "localhost"
-#ejabbers.route_subdomains: s2s
+ejabberd:
+  enable_service_control: True
+  auth_method: ldap
+  acl:
+    admins:
+      - 'admin@example.com'
+  ldap:
+    shared_roster: True
+    servers:
+      - 'ldap.example.com'
+    encrypt: none
+    port: 389
+    rootdn: "cn=radius,cn=Users,dc=example,dc=com"
+    password: {{ secrets['vault']['radius_secret'] | yaml }}
+    base: "cn=Users,dc=example,dc=com"
+    uids: '["sAMAccountName"]'
+    userdesc: "displayName"
+    filter: "(memberOf=cn=jabber-users,cn=Users,dc=example,dc=com)"
+  hosts:
+    - "example.com"
+  modules:
+    - mod_adhoc: {}
+    - mod_admin_extra: {}
+    - mod_caps: {}
+    - mod_carboncopy: {}
+    - mod_client_state: {}
+    - mod_mam: {}
+    - mod_avatar: {}
+    - mod_vcard_xupdate: {}
+    - mod_disco: {}
+    - mod_bosh: {}
+    - mod_last: {}
+    - mod_muc: {}
+    - mod_offline:
+        access_max_user_messages: max_user_offline_messages
+    - mod_ping: {}
+    - mod_push: {}
+    - mod_pubsub: {}
+    - mod_privacy: {}
+    - mod_private: {}
+    - mod_register:
+        access: register
+    - mod_roster: {}
+    - mod_shared_roster: {}
+    - mod_stats: {}
+    - mod_time: {}
+    - mod_version: {}
+    - mod_vcard:
+        db_type: ldap
