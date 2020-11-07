@@ -38,13 +38,13 @@
            },
         'package': ['ejabberd'],
     },
-    'default': {
+    'default_setup': {
         'config': {
             'base': '/etc/ejabberd',
             'filename': 'ejabberd.yml',
            },
         'package': 'ejabberd',
     },
-}, default=default) %}
+}, grain='os', default='default_setup') %}
 
 {% do ejabberd.update( ejabberd_osmap ) %}
